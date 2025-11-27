@@ -1,6 +1,8 @@
 asgiref==3.11.0
 dj-database-url==3.0.1
 Django==4.2.26
+gunicorn==23.0.0
+packaging==25.0
 postgres==4.0
 psycopg2-binary==2.9.11
 psycopg2-pool==1.2
