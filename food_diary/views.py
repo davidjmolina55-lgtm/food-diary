@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
-def home_page_view(request):
-    return HttpResponse("<h1>Hello, World!</h1>")
 
-
-
+def food_diary_view(request):
+    template = loader.get_template('food_diary.html')
+    return HttpResponse(template.render({}, request))
