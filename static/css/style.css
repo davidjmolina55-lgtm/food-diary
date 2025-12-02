@@ -1,0 +1,220 @@
+/* Accessible, consistent site stylesheet for Food Diary
+   - Keeps Bootstrap navbar markup untouched
+   - Provides neutral, high-contrast palette, clear focus states
+   - Applies consistent spacing, card styles, and accessible form controls
+*/
+:root {
+    --bg: #f6f8fa;
+    --surface: #ffffff;
+    --muted: #6c757d;
+    --text: #0f1720;
+    --primary: #0d6efd; /* Bootstrap primary */
+    --primary-600: #0b5ed7;
+    --focus: #ffb703; /* visible focus ring */
+    --radius: 10px;
+    --container-max: 980px;
+}
+
+/* Base typographic rhythm */
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    font-size: 16px;
+}
+
+/* Accessibility: skip link */
+.visually-hidden-focusable {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.visually-hidden-focusable:focus,
+.visually-hidden-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 8px;
+    padding: 8px 12px;
+    background: #000;
+    color: #fff;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Main layout */
+main.container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Cards */
+.card-lite {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(15, 23, 32, 0.06);
+    border: 1px solid rgba(15, 23, 32, 0.04);
+}
+
+/* Auth / Login card */
+.auth-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+}
+.auth-card .form-control {
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid rgba(15, 23, 32, 0.08);
+}
+.auth-card .form-control:focus {
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+    border-color: var(--primary);
+}
+.auth-card .btn-primary {
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-weight: 600;
+}
+
+/* Forms */
+.form-group {
+    display: block;
+}
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Use visually-hidden for labels when necessary */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Links and buttons */
+a {
+    color: var(--primary);
+}
+a:hover,
+a:focus {
+    color: var(--primary-600);
+    text-decoration: underline;
+}
+
+/* Focus-visible styles for keyboard users */
+*:focus {
+    outline: none;
+}
+*:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    color: var(--text);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: transparent;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(15, 23, 32, 0.04);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+}
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background: var(--primary-600);
+    border-color: var(--primary-600);
+}
+
+/* Utility: small text */
+.small {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* Tables (if used) */
+.table thead th {
+    background: transparent;
+    font-weight: 700;
+    color: var(--text);
+}
+.table tbody tr td {
+    vertical-align: middle;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Reduce specificity vs Bootstrap navbar: avoid overriding .navbar styles so the Bootstrap navbar remains unchanged */
+
+/* Responsive tweaks */
+@media (max-width: 575px) {
+    .auth-card {
+        padding: 0 8px;
+    }
+    main.container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* Contrast helper for badges/labels */
+.badge-strong {
+    background: #111827;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
