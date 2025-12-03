@@ -1,52 +1,75 @@
-<!-- prettier-ignore -->
-{% extends "base.html" %} {% url 'food_diary' as home_url %}
-<!-- prettier-ignore -->
-{% block title%}Diary Login{% endblock %} {% block content %}
-<div class="auth-page d-flex align-items-center justify-content-center">
+{% extends "base.html" %} {% load static %} {% block title %}Sign in — Food
+Diary{% endblock %} {% block content %}
+<div class="auth-page">
     <div class="auth-card card-lite">
-        <h2 class="h4 mb-3 text-center">Sign in</h2>
-        <form method="post" action="">
+        <h2 class="h4 mb-3">Sign in</h2>
+
+        {% if form.errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <form method="post" action="{% url 'food_diary' %}" novalidate>
             {% csrf_token %}
-            <div class="form-group mb-3">
-                <label for="id_username" class="visually-hidden"
-                    >Username</label
+
+            <div class="mb-3">
+                <label for="id_login" class="form-label"
+                    >Username or email</label
                 >
                 <input
-                    id="id_username"
-                    name="username"
+                    id="id_login"
+                    name="login"
                     type="text"
                     class="form-control"
-                    placeholder="Username"
+                    value="{{ form.login.value|default_if_none:'' }}"
                     required
+                    autofocus
                 />
+                {% for e in form.login.errors %}
+                <div class="text-danger small">{{ e }}</div>
+                {% endfor %}
             </div>
 
-            <div class="form-group mb-3">
-                <label for="id_password" class="visually-hidden"
-                    >Password</label
-                >
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
                 <input
                     id="id_password"
                     name="password"
                     type="password"
                     class="form-control"
-                    placeholder="Password"
                     required
                 />
+                {% for e in form.password.errors %}
+                <div class="text-danger small">{{ e }}</div>
+                {% endfor %}
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <a class="small" href="#">Forgot password?</a>
+            <div class="mb-3 form-check">
+                <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="id_remember"
+                    name="remember"
+                    value="on"
+                />
+                <label class="form-check-label" for="id_remember"
+                    >Remember me</label
+                >
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <input type="hidden" name="next" value="{% url 'food_list' %}" />
 
-            <p class="text-center small mt-3">
-                New here? <a href="#">Register</a>
-            </p>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                <a
+                    class="btn btn-outline-secondary"
+                    href="{% url 'account_signup' %}"
+                    >Register</a
+                >
+            </div>
         </form>
     </div>
 </div>
+
 {% endblock %} {% block extra_scripts %}
 <script
     type="module"

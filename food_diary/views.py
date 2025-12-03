@@ -11,6 +11,10 @@ from .forms import FoodForm
 def food_diary_view(request):
     # Render the main diary login/home template
     # Use the Django shortcut `render` which returns an HttpResponse
+    # If the user is already logged in, send them straight to the foods list
+    if request.user.is_authenticated:
+        return redirect('food_list')
+
     return render(request, 'food_diary.html')
    
 def food_list(request):
