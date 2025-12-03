@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<h1>Food Items</h1>
+
+<p><a class="btn btn-primary" href="{% url 'food_create' %}">Add Food</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Meal</th>
+            <th>Date</th>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for food in foods %}
+        <tr>
+            <td>{{ food.name }}</td>
+            <td>{{ food.get_meal_type_display }}</td>
+            <td>{{ food.date }}</td>
+            <td>{{ food.user }}</td>
+            <td>
+                <a href="{% url 'food_update' food.pk %}">Edit</a> |
+                <a href="{% url 'food_delete' food.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No foods yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %} {% url 'foods' as foods_url %}
+<!-- prettier-ignore -->
+{% block title %}Food Items{% endblock %}
+<!-- prettier-ignore -->
+<h1>Food Items</h1>
+
+<p><a href="{% url 'food_create' %}">Add Food</a></p>
+
+<ul>
+    {% for food in foods %}
+    <li>
+        {{ food.name }} - {{ food.meal_type }} on {{ food.date }}
+        <a href="{% url 'food_update' food.pk %}">Edit</a>
+        <a href="{% url 'food_delete' food.pk %}">Delete</a>
+    </li>
+    {% empty %}
+    <li>No foods yet.</li>
+    {% endfor %}
+</ul>
+<!-- prettier-ignore -->
