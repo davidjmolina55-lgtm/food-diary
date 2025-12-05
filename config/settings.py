@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com',
                  '127.0.0.1',]
@@ -51,7 +51,13 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+# After a successful login send users to the foods list.
+# Previously this was set to '/', but the site root is routed to the
+# login view (allauth's LoginView). Redirecting back to '/' after login
+# can create an infinite redirect loop (login -> / -> login). Pointing
+# the post-login redirect to '/foods/' ensures authenticated users land
+# on their diary list instead of the login page.
+LOGIN_REDIRECT_URL = '/foods/'
 LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
