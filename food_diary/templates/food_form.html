@@ -1,0 +1,45 @@
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+{% block title %}Add / Edit Food{% endblock %}
+{% block content %}
+<div class="card-lite">
+    <h1 class="h5 mb-3">
+        {% if form.instance.pk %}Edit{% else %}Add{% endif %} Food
+    </h1>
+    <form method="post">
+        {% csrf_token %} {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% for e in form.name.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.meal_type.label_tag }}
+            {{ form.meal_type }}
+            {% for e in form.meal_type.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.date.label_tag }}
+            {{ form.date }}
+            {% for e in form.date.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a class="btn btn-secondary" href="{% url 'food_list' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
