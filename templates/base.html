@@ -101,6 +101,29 @@
             crossorigin="anonymous"
         ></script>
 
+        <script>
+            // Auto-dismiss Bootstrap alerts after 5 seconds (5000 ms)
+            (function () {
+                const AUTO_DISMISS_MS = 5000;
+                document.addEventListener('DOMContentLoaded', function () {
+                    const alerts = document.querySelectorAll('.alert');
+                    alerts.forEach(function (el) {
+                        // Only set timeout for alerts that are dismissible
+                        if (el.classList.contains('alert-dismissible')) {
+                            setTimeout(function () {
+                                try {
+                                    const bsAlert = bootstrap.Alert.getInstance(el) || new bootstrap.Alert(el);
+                                    bsAlert.close();
+                                } catch (e) {
+                                    // ignore if bootstrap not available or already removed
+                                }
+                            }, AUTO_DISMISS_MS);
+                        }
+                    });
+                });
+            })();
+        </script>
+
         {% block extra_scripts %}{% endblock %}
     </body>
 </html>
