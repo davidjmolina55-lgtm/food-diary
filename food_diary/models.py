@@ -16,6 +16,8 @@ class Food(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
+    # Optional flag to mark entries as reviewed in the admin
+    reviewed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name} ({self.meal_type})"
