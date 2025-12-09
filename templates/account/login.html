@@ -1,39 +1,43 @@
-{% extends "base.html" %} {% load i18n %} {% load account socialaccount %}
-<!-- prettier-ignore -->
-{% block head_title %}{% trans "Sign In" %}{% endblock %} {% block content %}
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign In" %}</h3>
+{% block title %}{% trans "Sign In — Food Diary" %}{% endblock %}
 
-            <p>
-                {% blocktrans %}Welcome to Food Diary. Please, if you have not
-                made an account yet then
-                <a class="link" href="{{ signup_url }}">sign up</a>
-                {% endblocktrans %}
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <form
-                class="login"
-                method="POST"
-                action="{% url 'account_login' %}"
-            >
-                {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
-                <input
-                    type="hidden"
-                    name="{{ redirect_field_name }}"
-                    value="{{ redirect_field_value }}"
-                />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">
-                    {% trans "Sign In" %}
-                </button>
-            </form>
-        </div>
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card card-lite">
+        <h2 class="h4 mb-3">{% trans "Sign In" %}</h2>
+
+        <p class="small">{% blocktrans %}Welcome to Food Diary. If you don't have an account yet, <a href="{{ signup_url }}">sign up</a>.{% endblocktrans %}</p>
+
+        <form id="login_form" method="post" action="{% url 'account_login' %}" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            {% for field in form.visible_fields %}
+                <div class="mb-3">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% for e in field.errors %}
+                        <div class="text-danger small">{{ e }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">{% trans "Sign In" %}</button>
+                <a class="btn btn-outline-secondary" href="{% url 'account_signup' %}">{% trans "Register" %}</a>
+            </div>
+        </form>
     </div>
 </div>
+
 {% endblock %}

@@ -26,10 +26,20 @@ if SignupForm is not None:
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
+            from django.forms import widgets as form_widgets
             for name, field in self.fields.items():
-                existing = field.widget.attrs.get('class', '')
-                classes = (existing + ' form-control').strip()
-                field.widget.attrs['class'] = classes
+                widget = field.widget
+                existing = widget.attrs.get('class', '')
+
+                if isinstance(widget, form_widgets.CheckboxInput):
+                    cls = 'form-check-input'
+                elif isinstance(widget, form_widgets.Select):
+                    cls = 'form-select'
+                else:
+                    cls = 'form-control'
+
+                classes = (existing + ' ' + cls).strip()
+                widget.attrs['class'] = classes
 
 
 if LoginForm is not None:
@@ -38,7 +48,17 @@ if LoginForm is not None:
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
+            from django.forms import widgets as form_widgets
             for name, field in self.fields.items():
-                existing = field.widget.attrs.get('class', '')
-                classes = (existing + ' form-control').strip()
-                field.widget.attrs['class'] = classes
+                widget = field.widget
+                existing = widget.attrs.get('class', '')
+
+                if isinstance(widget, form_widgets.CheckboxInput):
+                    cls = 'form-check-input'
+                elif isinstance(widget, form_widgets.Select):
+                    cls = 'form-select'
+                else:
+                    cls = 'form-control'
+
+                classes = (existing + ' ' + cls).strip()
+                widget.attrs['class'] = classes
