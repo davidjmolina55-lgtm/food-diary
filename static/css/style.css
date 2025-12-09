@@ -218,6 +218,57 @@ img {
     }
 }
 
+/* Additional responsive adjustments to ensure consistent layout across sizes */
+@media (max-width: 768px) {
+    /* Make the auth card comfortably fit small tablets and large phones */
+    .auth-card {
+        max-width: 520px;
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    /* Slightly reduce card padding on smaller viewports */
+    .card-lite {
+        padding: 1rem;
+    }
+
+    /* Make table containers scroll horizontally rather than squishing content */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Stack form action buttons vertically on narrow screens for easier tapping */
+    .d-flex.gap-2 {
+        gap: 0.5rem;
+    }
+    .d-flex.gap-2 > .btn {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    /* Make primary/auth buttons full-width on small phones */
+    .auth-card .btn-primary,
+    .auth-card .btn-outline-secondary,
+    .d-flex.gap-2 > .btn {
+        width: 100%;
+        display: block;
+    }
+
+    /* Stack action buttons vertically */
+    .d-flex.gap-2 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Slightly smaller card radius and tighter spacing on tiny screens */
+    .card-lite {
+        border-radius: 8px;
+        padding: 0.9rem;
+    }
+}
+
 /* Contrast helper for badges/labels */
 .badge-strong {
     background: #111827;

@@ -154,3 +154,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Use custom allauth forms (if present) so widgets include Bootstrap classes
+ACCOUNT_FORMS = {
+    'signup': 'food_diary.forms.CustomSignupForm',
+    'login': 'food_diary.forms.CustomLoginForm',
+}
