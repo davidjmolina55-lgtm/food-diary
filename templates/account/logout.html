@@ -1,28 +1,27 @@
-{% extends "base.html" %} {% load i18n %} {% block head_title %}{% trans "Sign
-Out" %}{% endblock %} {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign Out" %}</h3>
+{% extends "base.html" %}
+{% load i18n %}
 
-            <p>{% trans 'Are you sure you want to sign out?' %}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <form method="post" action="{% url 'account_logout' %}">
-                {% csrf_token %} {% if redirect_field_value %}
-                <input
-                    type="hidden"
-                    name="{{ redirect_field_name }}"
-                    value="{{ redirect_field_value }}"
-                />
-                {% endif %}
-                <button class="btn btn-signup right" type="submit">
-                    {% trans 'Sign Out' %}
-                </button>
-            </form>
-        </div>
+{% block title %}{% trans "Sign Out — Food Diary" %}{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-card card-lite">
+        <h2 class="h4 mb-3">{% trans "Sign Out" %}</h2>
+
+        <p class="small">{% trans "Are you sure you want to sign out?" %}</p>
+
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" type="submit">{% trans "Sign Out" %}</button>
+                <a class="btn btn-outline-secondary" href="{% url 'account_login' %}">{% trans "Cancel" %}</a>
+            </div>
+        </form>
     </div>
 </div>
+
 {% endblock %}
