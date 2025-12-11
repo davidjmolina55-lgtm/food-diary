@@ -18,21 +18,27 @@ Food Diary is a lightweight Django application for tracking meals and food entri
 
 ## UX Design
 
-Design goals
-- Clean, accessible layout with a focus on readability and clear forms.
-- Consistent, minimal visual language using Bootstrap and a small site stylesheet (`static/css/style.css`).
-- Accessible keyboard focus states and a "skip to main content" link.
+- Clean, readable layout focused on content and forms.
+- Consistent visual language: Bootstrap + `static/css/style.css`.
+- Centered auth cards (`.auth-card`) for login/register/logout pages.
+- Sticky footer and a centered main container (≈980px max-width).
+- Accessible: visible focus states, a "skip to main content" link, and keyboard-friendly controls.
+- Forms: clear labels, inline validation errors, and accessible controls.
+- Feedback: flash messages appear at the top and auto-dismiss after 5 seconds.
+- Responsive: auth card and main container adapt on small screens; actions stack on narrow viewports.
 
-Layout
-- The site uses a `base.html` template with a Bootstrap navbar and a sticky footer. Main content sits inside a centered container limited to ~980px width.
-- Auth pages (login/register) use an `.auth-card` visual pattern — a centered card with a slightly elevated surface (`.card-lite`) and rounded corners.
+## Project Planning
+MOSCOW Prioritisation
+- Create User Accounts (Must-Have)
+- Update User Data from Admin Panel (Must-Have)
+- User Login (Should-Have)
+- Add Food Items To Diary (Should-Have)
+- Edit or Delete Diary Logs (Should-Have)
+- Filter and Search List (Wont-have, Future Enhancement)
+- Log Calories To Food Diary (Wont-have, Future Enhancement)
 
-Forms and feedback
-- Forms use accessible labels and inline errors. Flash messages are displayed at the top of the content area and auto-dismiss after 10 seconds.
-- The navbar shows login/register links when anonymous and a logout button for authenticated users.
-
-Mobile / responsive
-- The design is responsive; auth card and main container adapt down to small screens with padding adjustments and stacked controls.
+Wireframes
+![alt text](images/wireframe.JPG)
 
 ## Key Features
 
@@ -40,26 +46,9 @@ Mobile / responsive
 - Full CRUD: create, read, update, delete food entries with server-side ownership checks.
 - Authentication: django-allauth is wired for sign up, login, logout, and account management.
 - Accessible UI: clear focus states, skip link, and readable forms.
-- Flash messages: actions (create/update/delete) show success messages; messages auto-dismiss after 10 seconds.
+- Flash messages: actions (create/update/delete) show success messages; messages auto-dismiss after 5 seconds.
 - Admin integration: `Food` model registered in Django admin for quick inspection and management.
 
-## Future Enhancements
-
-- Add user preferences (time zone, date format, default meal type).
-- Export / import CSV of food history.
-- Add filtering and search on the food list (by date range, meal type, keyword).
-- Provide an API (Django REST Framework) for mobile or third-party integrations.
-- Unit and integration tests to cover views, forms, and permissions.
-- Improve form UX: password strength indicator on signup, show/hide password toggles, inline help text.
-- Optional social authentication flows via allauth.socialaccount.
-
-## Contributing
-
-Contributions are welcome. Please open issues for bugs or feature requests and submit PRs with focused changes.
-
----
-
-If you want, I can add a short Developer Notes section describing model fields and key templates. Would you like that added?
 
 ## Developer Notes
 
@@ -101,7 +90,12 @@ Notes
 - Ownership checks are performed server-side in views to prevent unauthorized edits/deletes.
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
 
-If you want, I can also add example API endpoints, unit tests for the views, or a short sequence of curated git commits describing the recent changes. Which of those would you prefer next?
+## Future Enhancements
 
-
-
+- Add calorie tracking feature
+- Add overall calorie feature for one given day cycle
+- Add filtering and search on the food list (by date range, meal type, keyword).
+- Create weight section for a user
+- Using this weight section, set current weight and goal weight
+- Add exercise section, logging exercises done on a particular day with an approximate of calories burned
+- Optional social authentication via allauth.socialaccount.
