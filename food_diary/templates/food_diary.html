@@ -17,13 +17,13 @@ Diary{% endblock %} {% block content %}
                 >
                 <input
                     id="id_login"
-                    name="login"
-                    type="text"
-                    class="form-control"
-                    value="{{ form.login.value|default_if_none:'' }}"
-                    required
-                    autofocus
-                />
+                        name="login"
+                        type="text"
+                        class="form-control"
+                        value="{{ form.login.value|default_if_none:'' }}"
+                        required
+                        autofocus
+                    >
                 {% for e in form.login.errors %}
                 <div class="text-danger small">{{ e }}</div>
                 {% endfor %}
@@ -37,7 +37,7 @@ Diary{% endblock %} {% block content %}
                     type="password"
                     class="form-control"
                     required
-                />
+                >
                 {% for e in form.password.errors %}
                 <div class="text-danger small">{{ e }}</div>
                 {% endfor %}
@@ -50,13 +50,13 @@ Diary{% endblock %} {% block content %}
                     id="id_remember"
                     name="remember"
                     value="on"
-                />
+                >
                 <label class="form-check-label" for="id_remember"
                     >Remember me</label
                 >
             </div>
 
-            <input type="hidden" name="next" value="{% url 'food_list' %}" />
+            <input type="hidden" name="next" value="{% url 'food_list' %}">
 
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-primary">Sign in</button>

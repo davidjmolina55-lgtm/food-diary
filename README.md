@@ -93,7 +93,7 @@ Notes
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
 
-## Testing
+## Lighthouse Testing
 Lighthouse Testing - Desktop
 
 Home/Login Page
@@ -109,6 +109,9 @@ Home/Login Page
 
 Diary Page
 ![alt text](images/Lighthouse4.png)
+
+## HTML Validation
+
 
 ## AI Implementation
 - Provided suggestions for styling and html setup
