@@ -61,10 +61,15 @@ ERD Diagram
 
 - Per-user food tracking: each `Food` record belongs to a user; list views show only the current user's entries.
 - Full CRUD: create, read, update, delete food entries with server-side ownership checks.
+![alt text](images/Scr1.png)
+
 - Authentication: django-allauth is wired for sign up, login, logout, and account management.
+![alt text](images/Scr2.png)
 - Accessible UI: clear focus states, skip link, and readable forms.
 - Flash messages: actions (create/update/delete) show success messages; messages auto-dismiss after 5 seconds.
+![alt text](images/Scr3.png)
 - Admin integration: `Food` model registered in Django admin for quick inspection and management.
+![alt text](images/Scr4.png)
 
 ## Agile
 Project Board - https://github.com/users/davidjmolina55-lgtm/projects/11
