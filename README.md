@@ -32,14 +32,14 @@ Food Diary is a lightweight Django application for tracking meals and food entri
 
 ## UX Design
 
-- Clean, readable layout focused on content and forms.
-- Consistent visual language: Bootstrap + `static/css/style.css`.
-- Centered auth cards (`.auth-card`) for login/register/logout pages.
-- Sticky footer and a centered main container (≈980px max-width).
-- Accessible: visible focus states, a "skip to main content" link, and keyboard-friendly controls.
-- Forms: clear labels, inline validation errors, and accessible controls.
-- Feedback: flash messages appear at the top and auto-dismiss after 5 seconds.
-- Responsive: auth card and main container adapt on small screens; actions stack on narrow viewports.
+- Clean, readable layout focused on content and forms
+- Consistent visual language: Bootstrap + CSS
+- Centered auth cards for login/register/logout pages
+- Sticky footer and a centered main container
+- Accessible: visible focus states
+- Forms: clear labels, inline validation errors, and accessible controls
+- Feedback: flash messages appear at the top and auto-dismiss after 5 seconds
+- Responsive: auth card and main container adapt on small screens; actions stack on narrow viewports
 
 ## Project Planning
 MOSCOW Prioritisation
