@@ -8,6 +8,7 @@ from django.contrib import messages
 from .models import Food
 from .forms import FoodForm
 
+
 # Create your views here.
 def food_diary_view(request):
     # Render the main diary login/home template
@@ -17,7 +18,8 @@ def food_diary_view(request):
         return redirect('food_list')
 
     return render(request, 'food_diary.html')
-   
+
+
 def food_list(request):
     # Show only the current user's foods when authenticated
     if request.user.is_authenticated:
@@ -26,6 +28,7 @@ def food_list(request):
         foods = Food.objects.none()
 
     return render(request, 'food_list.html', {'foods': foods})
+
 
 def food_create(request):
     # Only authenticated users may create food entries
@@ -42,6 +45,7 @@ def food_create(request):
 
     return render(request, 'food_form.html', {'form': form})
 
+
 def food_update(request, pk):
     food = get_object_or_404(Food, pk=pk)
     # Only allow the owner to update
@@ -56,6 +60,7 @@ def food_update(request, pk):
 
     return render(request, 'food_form.html', {'form': form})
 
+
 def food_delete(request, pk):
     food = get_object_or_404(Food, pk=pk)
     # Only allow the owner to delete
@@ -68,7 +73,3 @@ def food_delete(request, pk):
         return redirect('food_list')
 
     return render(request, 'food_delete_confirm.html', {'object': food})
-
-
-
-

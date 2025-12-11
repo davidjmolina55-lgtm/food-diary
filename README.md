@@ -7,14 +7,28 @@ Food Diary is a lightweight Django application for tracking meals and food entri
 
 ## Table of Contents
 
-- Overview
-- Getting Started
-	- Prerequisites
-	- Local Setup & Migrations
-- UX Design
-- Key Features
-- Future Enhancements
-- Contributing
+- [Overview](#overview)
+- [UX Design](#ux-design)
+- [Project Planning](#project-planning)
+	- [Wireframes](#wireframes)
+	- [ERD Diagram](#erd-diagram)
+- [Key Features](#key-features)
+- [Agile](#agile)
+- [Developer Notes](#developer-notes)
+	- [Models](#models)
+	- [Forms](#forms)
+	- [Views](#views)
+	- [Templates](#templates)
+	- [Admin](#admin)
+- [Lighthouse Testing](#lighthouse-testing)
+- [HTML Validation](#html-validation)
+- [CSS Validation](#css-validation)
+- [Future Enhancements](#future-enhancements)
+- [Libraries & Frameworks](#libraries--frameworks)
+- [Languages & Technologies Used](#languages--technologies-used)
+- [Deployment](#deployment)
+- [Credits](#credits)
+- [AI Implementation](#ai-implementation)
 
 ## UX Design
 
@@ -51,6 +65,14 @@ ERD Diagram
 - Accessible UI: clear focus states, skip link, and readable forms.
 - Flash messages: actions (create/update/delete) show success messages; messages auto-dismiss after 5 seconds.
 - Admin integration: `Food` model registered in Django admin for quick inspection and management.
+
+## Agile
+Project Board - https://github.com/users/davidjmolina55-lgtm/projects/11
+
+The project followed simple Agile practices:
+- Build small, testable increments and verify each step.
+- Prioritise essentials first (MoSCoW-style) to deliver value quickly.
+- Use quick patches and reviews to get feedback and improve the UI and deployment steadily.
 
 ## Developer Notes
 
@@ -117,10 +139,8 @@ Home/Login Page Validation
 Diary Page Validation
 ![alt text](images/HTMLVal2.png)
 
-## AI Implementation
-- Provided suggestions for styling and html setup
-- Performed focused code patches (templates, forms, CSS) to speed iteration.
-- Diagnosed template and deployment issues and suggested fixes.
+## CSS Validation
+![alt text](images/CSSVal.png)
 
 ## Future Enhancements
 
@@ -149,7 +169,25 @@ Diary Page Validation
 - **Deployment / Ops:** Heroku, Gunicorn, WhiteNoise, Git
 - **Tools:** GitHub, Django manage commands
 
+## Deployment
+
+Heroku deploy notes:
+
+- Ensure Debug=False and Whitenoise is enabled
+- Push code and build:
+	- git add . git commit -m "" git push, pushing all the data to github for deployment to Heroku
+- When the code is pushed to GitHub, go to Heroku, go to the deploy tab in heroku, scroll down and click 'Deploy Branch' 
+- When Heroku finishes the build, the logs can be viewed in case of any errors
+- After ensuring there are no errors, click 'Open App' or 'View' to open the deployed app
+
 ## Credits
 - Thanks to Code Institute for use of the LMS, Classes and Mentors for project structure, project setup and tips for debugging issues
 - Youtube for various videos for tips and tricks
 - Google for random issues with VSCode and Github/Heroku with issues with deployment etc.
+- W3C HTML Validator for HTML Validation
+- W3C CSS Valdiator for CSS validation
+
+## AI Implementation
+- Provided suggestions for styling and html setup
+- Performed focused code patches (templates, forms, CSS) to speed iteration.
+- Diagnosed template and deployment issues and suggested fixes.

@@ -106,4 +106,3 @@ class FoodAdmin(admin.ModelAdmin):
             messages.SUCCESS,
         )
     bulk_delete.short_description = "Delete selected Food items"
-

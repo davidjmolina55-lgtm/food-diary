@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class Food(models.Model):
     MEAL_TYPES = [
         ("breakfast", "Breakfast"),
