@@ -40,6 +40,9 @@ MOSCOW Prioritisation
 Wireframes
 ![alt text](images/wireframe.JPG)
 
+ERD Diagram
+![alt text](images/ERDimg.png)
+
 ## Key Features
 
 - Per-user food tracking: each `Food` record belongs to a user; list views show only the current user's entries.
@@ -48,7 +51,6 @@ Wireframes
 - Accessible UI: clear focus states, skip link, and readable forms.
 - Flash messages: actions (create/update/delete) show success messages; messages auto-dismiss after 5 seconds.
 - Admin integration: `Food` model registered in Django admin for quick inspection and management.
-
 
 ## Developer Notes
 
@@ -89,6 +91,12 @@ Notes
 - Flash messages use Django's `messages` framework and are rendered in `base.html`; they auto-dismiss via a small JS snippet.
 - Ownership checks are performed server-side in views to prevent unauthorized edits/deletes.
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
+- The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
+
+## AI Implementation
+- Provided suggestions for styling and html setup
+- Performed focused code patches (templates, forms, CSS) to speed iteration.
+- Diagnosed template and deployment issues and suggested fixes.
 
 ## Future Enhancements
 
@@ -99,3 +107,25 @@ Notes
 - Using this weight section, set current weight and goal weight
 - Add exercise section, logging exercises done on a particular day with an approximate of calories burned
 - Optional social authentication via allauth.socialaccount.
+
+## Libraries & Frameworks
+
+- **Django 4.2** — main web framework
+- **django-allauth** — user authentication
+- **WhiteNoise** — serves static files in production
+- **Gunicorn** — production WSGI server
+- **dj-database-url** — parses `DATABASE_URL`
+- **psycopg2** — PostgreSQL driver
+- **Bootstrap 5** — responsive UI 
+
+## Languages & Technologies Used
+
+- **Languages:** Python 3.12, HTML5, CSS3, JavaScript
+- **Frontend:** Bootstrap 5, JavaScript
+- **Deployment / Ops:** Heroku, Gunicorn, WhiteNoise, Git
+- **Tools:** GitHub, Django manage commands
+
+## Credits
+- Thanks to Code Institute for use of the LMS, Classes and Mentors for project structure, project setup and tips for debugging issues
+- Youtube for various videos for tips and tricks
+- Google for random issues with VSCode and Github/Heroku with issues with deployment etc.
