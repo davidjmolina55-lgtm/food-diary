@@ -111,7 +111,11 @@ Diary Page
 ![alt text](images/Lighthouse4.png)
 
 ## HTML Validation
+Home/Login Page Validation
+![alt text](images/HTMLVal1.png)
 
+Diary Page Validation
+![alt text](images/HTMLVal2.png)
 
 ## AI Implementation
 - Provided suggestions for styling and html setup

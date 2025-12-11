@@ -15,12 +15,19 @@
         <!-- Site stylesheet: provides a consistent, accessible look across pages -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-        <!-- Minimal scoped fallback for auth pages: keeps login/signup centered if static CSS fails -->
+        <!-- Minimal fallback styles: layout + auth card (applies only when static CSS fails) -->
         <style>
-            .auth-page{display:flex;align-items:center;justify-content:center;padding:2rem 0;box-sizing:border-box}
-            .auth-page .auth-card{width:100%;max-width:420px;margin:0 1rem;border-radius:10px;background:#fff;padding:1.25rem;box-shadow:0 6px 18px rgba(15,23,32,0.06);box-sizing:border-box}
-            .auth-page .auth-card .form-control{border-radius:8px;padding:.6rem .75rem}
-            @media (max-width:575px){.auth-page{padding:1rem}.auth-page .auth-card{margin:0 .5rem}}
+            /* Page layout: ensure footer sticks to bottom */
+            html, body { height: 100%; margin: 0; }
+            body { display: flex; flex-direction: column; min-height: 100vh; }
+            main#content, main.container { flex: 1 0 auto; }
+            footer { flex-shrink: 0; }
+
+            /* Auth card fallback */
+            .auth-page { display: flex; align-items: center; justify-content: center; padding: 2rem 0; box-sizing: border-box; }
+            .auth-page .auth-card { width: 100%; max-width: 420px; margin: 0 1rem; border-radius: 10px; background: #fff; padding: 1.25rem; box-shadow: 0 6px 18px rgba(15,23,32,0.06); box-sizing: border-box; }
+            .auth-page .auth-card .form-control { border-radius: 8px; padding: .6rem .75rem; }
+            @media (max-width:575px) { .auth-page { padding: 1rem } .auth-page .auth-card { margin: 0 .5rem } }
         </style>
 
         {% block extra_head %}{% endblock %}
