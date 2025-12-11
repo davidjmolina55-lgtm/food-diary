@@ -93,6 +93,23 @@ Notes
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
 - The project uses `django-allauth` for authentication; account templates are under `templates/account/` and the signup template has been adapted to match the site's styling.
 
+## Testing
+Lighthouse Testing - Desktop
+
+Home/Login Page
+![alt text](images/Lighthouse1.png)
+
+Diary Page
+![alt text](images/Lighthouse2.png)
+
+Lighthouse Testing - Mobile
+
+Home/Login Page
+![alt text](images/Lighthouse3.png)
+
+Diary Page
+![alt text](images/Lighthouse4.png)
+
 ## AI Implementation
 - Provided suggestions for styling and html setup
 - Performed focused code patches (templates, forms, CSS) to speed iteration.
